@@ -90,4 +90,4 @@ def password_strength(password=""):
         return "Strong"
 
 # print(password_strength("Helasdfafsdalo"))
-)
+
