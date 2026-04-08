@@ -19,18 +19,41 @@ def func_info(func):
 
 import time
 
-def timer(func):
+# def timer(func):
+#     def wrapper(*args,**kwargs):
+#         start_time=time.time()
+#         result=func(*args, **kwargs)
+#         end_time=time.time()
+#         print(f"{func.__name__} run from {start_time}-{end_time}")
+#         return result
+#     return wrapper
+
+# @timer
+# @func_info
+# def func1():
+#     time.sleep(4)    
+
+# func1()
+
+def cache_return(func):
+    cache_values={}
     def wrapper(*args,**kwargs):
-        start_time=time.time()
-        result=func(*args, **kwargs)
-        end_time=time.time()
-        print(f"{func.__name__} run from {start_time}-{end_time}")
+        key =" ".join([str(arg) for arg in args]) + " ".join([str(arg) for arg in kwargs.items()])
+
+        # print("key",bool(cache_values.get(key)))
+        if(cache_values.get(key)):
+            return cache_values.get(key)
+        result = func(*args,**kwargs)
+        cache_values[key]=result
         return result
     return wrapper
 
-@timer
-@func_info
-def func1():
-    time.sleep(4)    
+@cache_return
+def sum(a,b):
+    time.sleep(4)
+    return a+b
 
-func1()
+print("sum(3,4)",sum(3,4))
+print("sum(3,4)",sum(3,4))
+print("sum(3,4)",sum(2,4))
+print("sum(3,4)",sum(3,4))
