@@ -46,3 +46,13 @@
 
 
 # print(fact(5))
+
+
+# def adder(x):
+#     def add(y):
+#         return x + y
+#     return add
+
+# func1 = adder(2)
+# print(func1(4))
+# print(func1(4))
