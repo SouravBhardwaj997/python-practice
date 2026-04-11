@@ -1,18 +1,10 @@
-def list_all_todos():
-    print("List all todos")
-
-def add_new_todo():
-    print("add new todo")
-
-def update_todo():
-    print("add new todo")
-
-def delete_todo():
-    print("Delete Todo ")
-
+from add_todo import add_todo
+from list_all_todos import list_all_todos
+from update_todo import update_todo
+from delete_todo import delete_todo
 def main():
     while(True):
-        print("TODO APP | Enter the choice number to start\n")
+        print("\n\nTODO APP | Enter the choice number to start")
         print("1. List all todos")
         print("2. Add New Todo")
         print("3. Update Todo")
@@ -24,7 +16,7 @@ def main():
             case "1":
                 list_all_todos()
             case "2":
-                add_new_todo()
+                add_todo()
             case "3":
                 update_todo()
             case "4":
